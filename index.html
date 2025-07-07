@@ -375,17 +375,6 @@
             // Cập nhật tần số
             document.getElementById('frequency-text').innerText = (valueHZSET/100) + 'Hz';
 
-            // Cập nhật trạng thái (ĐANG CHẠY / ĐANG DỪNG)
-            // if (valueStatus === 1) {
-            //     document.getElementById('status-text').innerText = 'ĐANG CHẠY';
-            //     document.getElementById('fan-icon').style.display = 'inline'; // Hiển thị icon quạt quay
-            //     document.getElementById('fan-icon').classList.add('custom-spin'); // Thêm class quay
-            // } else if (valueStatus === 3) {
-            //     document.getElementById('status-text').innerText = 'ĐANG DỪNG';
-            //     document.getElementById('fan-icon').style.display = 'none'; // Ẩn icon quạt khi dừng
-            //     document.getElementById('fan-icon').classList.remove('custom-spin'); // Dừng quay
-            // }
-
             if (valueStatus === 1) { // ĐANG CHẠY
                 TrangThai.innerHTML = `<i class="fas fa-fan custom-spin" style="margin-right: 8px;"></i>ĐANG CHẠY`;
                 TrangThai.style.color = 'var(--status-running-text-color)';
@@ -457,14 +446,14 @@
 
         // Xử lý xác nhận hành động
         document.getElementById('confirm-button').onclick = function() {
+            // console.log(`Hành động hiện tại: ${currentAction}`); // Kiểm tra giá trị của currentAction
+
             if (currentAction === 'start') {
                 // Thực hiện hành động "CHẠY"
-                document.getElementById('status-text').innerText = 'ĐANG CHẠY';
                 eraWidget.triggerAction(actionRUN.action, null);
                 document.getElementById('action-confirmation-popup').style.display = 'none';
             } else if (currentAction === 'stop') {
                 // Thực hiện hành động "DỪNG"
-                document.getElementById('status-text').innerText = 'ĐANG DỪNG';
                 eraWidget.triggerAction(actionSTOP.action, null);
                 document.getElementById('action-confirmation-popup').style.display = 'none';
             }
