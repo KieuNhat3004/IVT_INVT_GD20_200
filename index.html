@@ -222,6 +222,7 @@
             font-size: 1.35em; /* Further increased font size for "ĐANG CHẠY/DỪNG" */
             font-weight: bold;
             padding: 10px 15px; 
+            padding-top: 0px; /* Increased padding for better spacing */
             border-radius: 10px; 
             border-width: 2.5px; 
             border-style: solid;
@@ -300,6 +301,13 @@
         width: 100%;
         margin-top: 10px;
     }
+}
+@media (max-width:400px){
+    .container {
+        width: 100%; /* Đảm bảo chiều rộng container chiếm 100% */
+        padding: 10px; /* Giảm khoảng cách padding */
+    }
+
 }
 
 
