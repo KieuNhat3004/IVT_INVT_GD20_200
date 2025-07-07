@@ -54,7 +54,7 @@
         }
 
         .settings p {
-        font-size: 25px;
+        font-size: 20px;
         margin: 0;
         margin-right: 10px; /* Khoảng cách giữa chữ và nút */
     }
@@ -80,10 +80,10 @@
             background-color: #007bff;
             color: white;
             padding: 10px 20px;
-            font-size: 16px;
+            font-size: 14px;
             cursor: pointer;
-            min-width: 120px;
-            margin-left: 10px; /* Đảm bảo có khoảng cách giữa nút và tần số */
+            min-width: 100px;
+            margin-left: 8px; /* Đảm bảo có khoảng cách giữa nút và tần số */
         }
 
         #start-button {
@@ -97,22 +97,10 @@
         }
 
         #start-button, #stop-button {
-            padding: 15px 50px; /* Tăng padding để làm nút lớn hơn */
-            font-size: 18px; /* Tăng kích thước chữ để nút rõ ràng hơn */
+            padding: 15px 40px; /* Tăng padding để làm nút lớn hơn */
+            font-size: 16px; /* Tăng kích thước chữ để nút rõ ràng hơn */
             width: auto; /* Đảm bảo nút có kích thước tự động phù hợp với nội dung */
         }
-
-        /* .status {
-            color: red;
-            font-weight: bold;
-            font-size: 30px;
-            margin-top: 20px;
-            margin-bottom: 0px;
-            padding-top: 20px;
-            padding-top: 20px;
-            
-            border-top: 2px solid #ccc; 
-        } */
 
         .popup {
             display: none;
@@ -269,6 +257,51 @@
         @keyframes custom-spin { 0%{transform:rotate(0deg)} 100%{transform:rotate(360deg)} }
         .custom-spin { animation: custom-spin 1.5s linear infinite; }
 
+    /* Điều chỉnh layout cho các nút khi màn hình nhỏ */
+@media screen and (max-width: 480px) {
+    .container {
+        width: 100%; /* Đảm bảo chiều rộng container chiếm 100% */
+        padding: 10px; /* Giảm khoảng cách padding */
+    }
+
+    /* Sắp xếp lại các nút "CHẠY" và "DỪNG" trên một hàng ngang */
+    .settings {
+        display: flex;
+        justify-content: center;  /* Căn giữa các phần tử */
+        flex-wrap: wrap;  /* Cho phép các nút bẻ xuống hàng nếu không đủ chỗ */
+    }
+
+    .settings button {
+        width: 45%; /* Mỗi nút chiếm 45% chiều rộng của hàng */
+        margin: 5px; /* Khoảng cách giữa các nút */
+    }
+
+    #start-button, #stop-button {
+        width: 45%;  /* Đảm bảo hai nút chạy và dừng chiếm 45% chiều rộng */
+        padding: 10px 20px;
+        font-size: 16px;
+    }
+
+    /* Thay đổi chiều rộng của popup khi màn hình nhỏ */
+    .popup-content {
+        width: 70%;
+        max-width: 250px;
+    }
+
+    /* Cải thiện khoảng cách giữa các nút trong popup */
+    .popup-content .button-container {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    /* Nút "Lưu cài đặt" trong popup */
+    #save-button {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
+
     </style>
 </head>
 <body>
@@ -318,7 +351,7 @@
             needRead: true,
             needActions: true,
             needConfigs: true,
-            mobileHeight: 280,
+            mobileHeight: 220,
 
             onConfiguration: (config) => {
                 readStatus = config.realtime_configs[0];
